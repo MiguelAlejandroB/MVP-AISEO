@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
     plugins: [react()], 
 
     // La propiedad 'base' debe coincidir EXACTAMENTE con el nombre de tu repositorio
-    base: '/MVP-AISEO/', // <-- ¡CORREGIDO! 
+    base: '', // <-- ¡CORREGIDO! 
 
     // --- Tu configuración original (la mantenemos) ---
     define: {
