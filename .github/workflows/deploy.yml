@@ -1,0 +1,32 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Se ejecuta cada vez que haces un 'commit' a la rama principal
+  push:
+    branches: ['main'] # O 'master' si tu rama principal se llama así
+
+  # Permite ejecutar este flujo de trabajo manualmente desde la pestaña de Actions
+  workflow_dispatch:
+
+# Permisos para que la acción pueda escribir en la rama gh-pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Install and Build 🔧
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # La carpeta que Vite genera
